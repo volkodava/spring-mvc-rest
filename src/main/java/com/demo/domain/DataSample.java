@@ -3,11 +3,14 @@ package com.demo.domain;
 public class DataSample {
 
     private int id;
-    private String name;
+    private String value;
 
-    public DataSample(int id, String name) {
+    public DataSample() {
+    }
+
+    public DataSample(int id, String value) {
         this.id = id;
-        this.name = name;
+        this.value = value;
     }
 
     public int getId() {
@@ -18,11 +21,33 @@ public class DataSample {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
+    public String getValue() {
+        return value;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setValue(String value) {
+        this.value = value;
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 5;
+        hash = 29 * hash + this.id;
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final DataSample other = (DataSample) obj;
+        if (this.id != other.id) {
+            return false;
+        }
+        return true;
     }
 }
